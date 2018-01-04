@@ -14,8 +14,8 @@ func main() {
 
 	sc := bufio.NewScanner(os.Stdin)
 
+Outer:
 	for {
-		goto_next := false
 		correct, masked := MakeProblem(words)
 		Say("「" + masked + "」に当てはまる英単語を答えるニャ")
 		for sc.Scan() {
@@ -23,19 +23,15 @@ func main() {
 			if answer == "正解は？" {
 				Say("しょうがにゃいニャ～")
 				Say(correct)
-				goto_next = true
-				break
+				continue Outer
 			} else if answer == correct {
 				Say("正解だニャ")
-				goto_next = true
-				break
+				continue Outer
 			} else {
 				Say("不正解だニャ")
 			}
 		}
-		if goto_next == false {
-			break
-		}
+		break
 	}
 	fmt.Print("bye!\n")
 }
