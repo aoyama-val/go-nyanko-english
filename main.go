@@ -8,9 +8,13 @@ import (
 	"time"
 )
 
+var version = "" // makeによりセットされる
+
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	words := LoadWords("words.txt")
+
+	fmt.Printf("にゃんこイングリッシュ %s\n", version)
 
 	sc := bufio.NewScanner(os.Stdin)
 
@@ -55,7 +59,7 @@ func LoadWords(filename string) []string {
 	return ret
 }
 
-// 0..(max-1)の配列をシャッフルする
+// Shuffle shuffles an array of 0..(max-1).
 func Shuffle(numbers []int) {
 	max := len(numbers)
 	for i := 0; i < max-1; i++ {
@@ -66,6 +70,7 @@ func Shuffle(numbers []int) {
 	}
 }
 
+// MaskWord masks a word.
 func MaskWord(word string) string {
 	count := 0
 	wordlen := len(word)
@@ -92,6 +97,7 @@ func MaskWord(word string) string {
 	return word
 }
 
+// MakeProblem returns a pair of non-masked and masked word.
 func MakeProblem(words []string) (string, string) {
 	i := rand.Intn(len(words))
 	w := words[i]
