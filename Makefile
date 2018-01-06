@@ -9,7 +9,7 @@ nyanko: nyanko.go
 
 release: all
 	mkdir -p $(APP)-$(VERSION)
-	cp nyanko $(APP)-$(VERSION)
+	cp nyanko words.txt $(APP)-$(VERSION)
 	zip -r $(APP)-$(VERSION).zip $(APP)-$(VERSION)
 	rm -rf $(APP)-$(VERSION)
 
