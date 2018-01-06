@@ -5,7 +5,7 @@ VERSION	=	$(shell git describe --tags)
 
 nyanko: nyanko.go
 	go vet -v
-	go build -o nyanko -ldflags "-X main.version=$(version)"
+	go build -o nyanko -ldflags "-X main.version=$(VERSION)"
 
 release: all
 	mkdir -p $(APP)-$(VERSION)
