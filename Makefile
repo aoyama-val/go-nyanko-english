@@ -1,8 +1,8 @@
-all: main
+all: nyanko
 
-main: main.go
+nyanko: nyanko.go
 	go vet -v
-	go build -o main -ldflags "-X main.version=$(shell git describe --tags)"
+	go build -o nyanko -ldflags "-X main.version=$(shell git describe --tags)"
 
 clean:
-	rm -rf main
+	rm -rf nyanko
