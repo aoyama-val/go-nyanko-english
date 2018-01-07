@@ -3,9 +3,12 @@ all: nyanko
 APP		=	nyanko
 VERSION	=	$(shell git describe --tags)
 
-nyanko: nyanko.go
+nyanko: nyanko.go words.go
 	go vet -v
 	go build -o nyanko -ldflags "-X main.version=$(VERSION)"
+
+words.go: words.txt
+	go-bindata -o words.go words.txt
 
 release: all
 	mkdir -p $(APP)-$(VERSION)

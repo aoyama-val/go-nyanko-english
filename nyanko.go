@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"math/rand"
 	"os"
@@ -48,11 +49,11 @@ func Check(e error) {
 }
 
 func LoadWords(filename string) []string {
-	f, err := os.Open(filename)
+	data, err := Asset("words.txt")
 	Check(err)
-	defer f.Close()
+	r := bytes.NewReader(data)
 	ret := make([]string, 0, 3000)
-	sc := bufio.NewScanner(f)
+	sc := bufio.NewScanner(r)
 	for sc.Scan() {
 		ret = append(ret, sc.Text())
 	}
