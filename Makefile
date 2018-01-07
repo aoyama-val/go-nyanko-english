@@ -1,7 +1,8 @@
 all: nyanko
 
 APP		=	nyanko
-VERSION	=	$(shell git describe --tags)
+#VERSION        =       $(shell git describe --tags)
+VERSION	=	$(shell echo `date +'%Y%m%d-%H%M%S'`-`git rev-parse --short HEAD`)
 
 nyanko: nyanko.go words.go
 	go vet -v
