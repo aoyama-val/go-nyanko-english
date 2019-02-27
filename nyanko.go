@@ -49,7 +49,7 @@ func Check(e error) {
 }
 
 func LoadWords(filename string) []string {
-	data, err := Asset("words.txt")
+	data, err := Asset(filename)
 	Check(err)
 	r := bytes.NewReader(data)
 	ret := make([]string, 0, 3000)
